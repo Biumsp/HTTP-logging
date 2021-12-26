@@ -39,9 +39,11 @@ class HttpHandler(logging.Handler):
             pool_maxsize=100
         ))
 
+
     def setLevel(self, level):
         super().setLevel(level)
         self.fixed_level = level
+        
 
     def emit(self, record):
         '''Sends the record in a POST request to the specified url'''
