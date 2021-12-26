@@ -6,7 +6,6 @@ It allows to send POST requests to a given URL (e.g., a webhook) using the loggi
 It is very usefull for applications deployed in cloud, because it allows to employ external error handlers (like for example Google Cloud Functions). 
 It can be also exploited to get notifications through third-party APIs (like Telegram Bots, or Gmail) in case of critical errors.
 
----
 ## Installation 
 
 Being just one class it can be integrated in your own code without any problems. 
@@ -25,7 +24,6 @@ In the __requirements.txt__ file add the line
 
 In both cases `@main` is set to specify the branch and `egg=httplogging` to explicitly name the package.
 
----
 ## Usage
 
 First of all you need to import the class
