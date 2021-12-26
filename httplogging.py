@@ -9,6 +9,9 @@ class HttpHandler(logging.Handler):
 
         self.url    = url
         self.silent = silent
+
+        # Default value
+        self.auth = False
         
         # If set to True, this handler ignores lower-level records
         # For example, if level_specific=True and the level is set to 
@@ -39,6 +42,10 @@ class HttpHandler(logging.Handler):
             pool_maxsize=100
         ))
 
+    def setCredentials(username: str, password: str):
+        self.auth     = True
+        self.username = username
+        self.password = password
 
     def setLevel(self, level):
         super().setLevel(level)
@@ -54,7 +61,13 @@ class HttpHandler(logging.Handler):
                 return
 
         logEntry = self.format(record)
-        response = self.session.post(self.url, data=logEntry, auth=('user', 'pass'))
+
+        if self.auth:
+            response = self.session.post(self.url, 
+                                        data=logEntry, 
+                                        auth=(self.username, self.password))
+        else:
+            response = self.session.post(self.url, data=logEntry)
 
         if not self.silent:
             print(f"Log forwarded to url: {response}")
