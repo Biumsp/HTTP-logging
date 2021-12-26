@@ -42,7 +42,7 @@ class HttpHandler(logging.Handler):
             pool_maxsize=100
         ))
 
-    def setCredentials(username: str, password: str):
+    def setCredentials(self, username: str, password: str):
         self.auth     = True
         self.username = username
         self.password = password
