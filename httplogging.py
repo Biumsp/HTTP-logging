@@ -10,8 +10,11 @@ class HttpHandler(logging.Handler):
         self.url    = url
         self.silent = silent
 
-        # Default value
+        # Set default auth
         self.auth = False
+
+        # Set default telegram_chat_id
+        self.setTelegramChatId()
         
         # If set to True, this handler ignores lower-level records
         # For example, if level_specific=True and the level is set to 
@@ -47,6 +50,9 @@ class HttpHandler(logging.Handler):
         self.username = username
         self.password = password
 
+    def setTelegramChatId(chat_id="0"):
+        self.telegram_chat_id = chat_id
+
     def setLevel(self, level):
         super().setLevel(level)
         self.fixed_level = level
@@ -63,9 +69,12 @@ class HttpHandler(logging.Handler):
         logEntry = self.format(record)
 
         if self.auth:
+            username = self.username + "@" + self.telegram_chat_id
+            password = self.password
+
             response = self.session.post(self.url, 
                                         data=logEntry, 
-                                        auth=(self.username, self.password))
+                                        auth=(username, password))
         else:
             response = self.session.post(self.url, data=logEntry)
 

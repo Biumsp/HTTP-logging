@@ -4,6 +4,8 @@ from httplogging import HttpHandler
 
 # Settings -------------------------------------------------------------------------
 
+TELEGRAM_CHATID = 
+
 APPNAME = "Logging Tutorial"
 LOGURL  = "your-webhook-url-here"
 
@@ -32,6 +34,12 @@ http_format = logging.Formatter(jsondumps(JSONFORMAT), datefmt=DATEFORMAT)
 
 # add formatter to custom http handler
 http_handler.setFormatter(http_format)
+
+# add credentials 
+http_handler.setCredentials(LOGBOT_USERNAME, LOGBOT_PASSWORD)
+
+# set telegram chat_id
+http_handler.setTelegramChatId(TELEGRAM_CHATID)
 
 
 # Logging settings -----------------------------------
