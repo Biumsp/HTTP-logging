@@ -43,4 +43,10 @@ logging.basicConfig(format=CMDFORMAT, datefmt=DATEFORMAT, level=log_level)
 # Create logger instance -----------------------------------
 
 logger = logging.getLogger(APPNAME)
-logger.addHandler(http_handler)  
+logger.addHandler(http_handler) 
+
+
+# Logging some messages ---------------------------------------
+
+logger.error("This won't be handled by the http_handler")
+logger.critical("This will be handled by the http_handler")
