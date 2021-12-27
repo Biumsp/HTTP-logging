@@ -4,7 +4,7 @@ from httplogging import HttpHandler
 
 # Settings -------------------------------------------------------------------------
 
-TELEGRAM_CHATID = 
+TELEGRAM_CHATID = "your-chat-id-here"
 
 APPNAME = "Logging Tutorial"
 LOGURL  = "your-webhook-url-here"
