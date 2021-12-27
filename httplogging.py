@@ -72,12 +72,12 @@ class HttpHandler(logging.Handler):
             username = self.username + "@" + self.telegram_chat_id
             password = self.password
 
-            response = self.session.post(self.url, 
+            response = r = self.session.post(self.url, 
                                         data=logEntry, 
                                         auth=(username, password))
         else:
-            response = self.session.post(self.url, data=logEntry)
+            response = r = self.session.post(self.url, data=logEntry)
 
         if not self.silent:
-            print(f"Log forwarded to url: {response}")
+            print(f"Response: {r.status_code} - {r._content.decode('utf-8')}")
             
