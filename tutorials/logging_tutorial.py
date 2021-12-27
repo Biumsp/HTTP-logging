@@ -4,6 +4,7 @@ from httplogging import HttpHandler
 
 # Settings -------------------------------------------------------------------------
 
+USERNAME, PASSWORD = "your-username", "your-password"
 TELEGRAM_CHATID = "your-chat-id-here"
 
 APPNAME = "Logging Tutorial"
@@ -36,7 +37,7 @@ http_format = logging.Formatter(jsondumps(JSONFORMAT), datefmt=DATEFORMAT)
 http_handler.setFormatter(http_format)
 
 # add credentials 
-http_handler.setCredentials(LOGBOT_USERNAME, LOGBOT_PASSWORD)
+http_handler.setCredentials(USERNAME, PASSWORD)
 
 # set telegram chat_id
 http_handler.setTelegramChatId(TELEGRAM_CHATID)
