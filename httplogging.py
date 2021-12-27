@@ -50,7 +50,7 @@ class HttpHandler(logging.Handler):
         self.username = username
         self.password = password
 
-    def setTelegramChatId(chat_id="0"):
+    def setTelegramChatId(self, chat_id="0"):
         self.telegram_chat_id = chat_id
 
     def setLevel(self, level):
