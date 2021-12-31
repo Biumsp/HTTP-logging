@@ -66,10 +66,6 @@ class HttpHandler(logging.Handler):
             if record.levelno != self.fixed_level:
                 return
 
-        # Handle parse_mode=ParseMode.HTML error for <stdin>
-        if record.pathname == "<stdin>":
-            record.pathname = "stdin"
-
         logEntry = self.format(record)
 
         if self.auth:
